@@ -1,0 +1,61 @@
+html {
+  body {
+    margin: 0;
+    .container {
+      text-align: center;
+      .form {
+        padding: 20px 0;
+        .input {
+          width: 70%;
+          padding: 5px;
+          font-size: 20px;
+        }
+        .button {
+          padding: 5px 10px;
+          font-size: 20px;
+          margin-left: 10px;
+        }
+      }
+      .searchResult {
+        .cityNameAndTemperature {
+          background-image: url("images/day.jpg");
+          background-position: bottom;
+          padding: 200px 50px 50px;
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 30px;
+        }
+        .table {
+          margin: auto;
+          border-collapse: collapse;
+          .tbody {
+            .tr {
+              .th,
+              .td {
+                font-size: 30px;
+                border: solid 2px gray;
+                text-align: left;
+                padding: 10px 0 10px 10px;
+              }
+              .th {
+                width: 400px;
+              }
+              .td {
+                width: 500px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
