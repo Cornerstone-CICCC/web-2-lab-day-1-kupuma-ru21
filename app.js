@@ -1,14 +1,12 @@
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.querySelector("form");
-  const employeeList = document.getElementById("employeeList");
-
   form.addEventListener("submit", async (event) => {
-    event.preventDefault();
     try {
+      event.preventDefault();
       const formData = new FormData(form);
       const city = formData.get("city");
-      try {
-      } catch (error) {}
+      document.querySelector(".searchResult").style.display = "block";
+
       const cityData = await fetch(
         `https://geocoding-api.open-meteo.com/v1/search?name=${city}&count=1&language=en&format=json`
       );
@@ -16,11 +14,12 @@ document.addEventListener("DOMContentLoaded", function () {
       const country = cityDataJson.results[0].country;
       const timezone = cityDataJson.results[0].timezone;
       const population = cityDataJson.results[0].population;
+      const cityName = cityDataJson.results[0].admin1;
 
       document.querySelector(".country").textContent = country;
       document.querySelector(".timezone").textContent = timezone;
       document.querySelector(".population").textContent = population;
-      document.querySelector(".cityName").textContent = city;
+      document.querySelector(".cityName").textContent = cityName;
 
       const latitude = cityDataJson.results[0].latitude;
       const longitude = cityDataJson.results[0].longitude;
@@ -28,7 +27,6 @@ document.addEventListener("DOMContentLoaded", function () {
         `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,is_day,rain,showers&daily=temperature_2m_max,temperature_2m_min&timezone=auto&forecast_days=1`
       );
       const weatherDataJsonByCountry = await weatherDataByCountry.json();
-      console.log(weatherDataJsonByCountry);
       const currentTemperature =
         weatherDataJsonByCountry.current.temperature_2m;
       document.querySelector(

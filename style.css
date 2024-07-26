@@ -17,6 +17,7 @@ html {
         }
       }
       .searchResult {
+        display: none;
         .cityNameAndTemperature {
           background-image: url("images/day.jpg");
           background-position: bottom;
